@@ -1,12 +1,19 @@
 import os
+import yaml
 import json
 import cv2
 import numpy as np
 import trimesh
 
+def load_config():
+    config_path = os.path.join(os.path.dirname(__file__), "..", "configs", "mvp_ycbv.yaml")
+    with open(config_path, 'r') as f:
+        return yaml.safe_load(f)
+
 def verify_gt():
-    base_dir = "armo6d/data/bop/ycbv"
-    scene_id = "000048"
+    cfg = load_config()
+    base_dir = cfg["dataset"]["root"]
+    scene_id = cfg["dataset"]["scene_id"]
 
     gt_json_path = os.path.join(base_dir, "test", scene_id, "scene_gt.json")
     cam_json_path = os.path.join(base_dir, "test", scene_id, "scene_camera.json")

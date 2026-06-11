@@ -1,0 +1,6 @@
+dataset:
+  name: ycbv
+  root: /root/autodl-tmp/bop/ycbv  # 云端路径；本地改为 armo6d/data/bop/ycbv
+  scene_id: "000048"
+  frame_start: 0
+  frame_end: -1

@@ -75,12 +75,11 @@ def verify_gt():
 
         print(f"物体 ID: {obj_id} 投影点云绘制完成")
 
-    window_name = "BOP GT Verification"
-    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    cv2.imshow(window_name, img)
-    print("\n成功：请在弹出的图片窗口上按任意键退出程序。")
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    output_dir = os.path.join(os.path.dirname(__file__), "..", "outputs", "verification")
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, f"{scene_id}_{img_filename}")
+    cv2.imwrite(output_path, img)
+    print(f"\n验证结果已保存至: {output_path}")
 
 if __name__ == "__main__":
     verify_gt()
